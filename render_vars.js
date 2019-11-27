@@ -12,11 +12,12 @@ var http = require("http"),
         var masinfo = "render de variables"
         var final = "aca termina."
 
+        // Reemplazamos las variables por los contenidos por el eval
         for (var i = variables.length - 1; i >= 0; i--) {
             var value = eval(variables[i]);
             html_string = html_string.replace("{" + variables[i] + "}", value);
         }
-
+        // Devuelve el html
         res.writeHead(200,{"Content-Type":"text/html"})
         res.write(html_string);
         res.end();
